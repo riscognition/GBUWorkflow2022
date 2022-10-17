@@ -20,6 +20,18 @@ The following steps have to be done so that the code can be used.
 3. The code must be hosted within a Virtual Machine (VM) of CreoDias to have access to their EO Data repository. For this purpose a Dockerfile is provided, which can be used to create an Image, that can be built and run within the Creodias VM.
 4. Alternatively, if you have access to a EO repository on your local drive you can run the Code locally with minimal adjustments. (See line 61 in scene.py for instructions)
 
+A Docker Image is provided to run our code on the CreoDIAS VM.
+Build the image with the following command so that the CreoDias EO repository is mounted on the Docker container:
+
+docker run \
+    --rm \
+    -it \
+    -p 8888:8888 \
+    --mount type=bind,source="/eodata",target=/project/eodata \
+    --mount source=volresults,target=/project/results \
+    --mount source=volnotebooks,target=/project/notebooks \
+    stefanosedano/gbu_workflow_2022
+
 Furthermore to run the code the python packages as specified in the requirements.txt must be satisfied. (3.10.5)
 However, the file run_GHS_S2Net.py has heavier requirements specified at https://github.com/ec-jrc/GHS-S2Net. 
 It is recommended to create 2 seperate Virtual Environments. One for running GHS-S2Net and one for everything else. 
