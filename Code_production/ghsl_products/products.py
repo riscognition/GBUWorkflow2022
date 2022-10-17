@@ -330,5 +330,19 @@ class NRes:
         NRes.save_raster(self.n_res_layer, self.path_to_nres, nres_meta)
 
 
+def binarize_bufrac(path_to_bufrac: str, path_to_bufrac_bin: str):
+    """
+    :param path_to_bufrac:
+    :param path_to_bufrac_bin:
+    :return:
+    """
+
+    bufrac, bufrac_meta = Bufrac.load_raster(path_to_bufrac)
+    bufrac_bin = np.where(bufrac > 0, 1, 0)
+    bufrac_bin_meta = bufrac_meta.copy()
+    bufrac_bin_meta.update(dtype="uint8")
+    Bufrac.save_raster(bufrac_bin, path_to_bufrac_bin, bufrac_bin_meta)
+
+
 if __name__ == "__main__":
     pass
