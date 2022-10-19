@@ -49,3 +49,5 @@ For the execution of the code the files
 The correct input and output paths have to be specified at the appropriate locations. 
 
 The folder RES_NRES_model_training contains some jupyter notbooks which can be used to recreate the RES NRES pixel based classification model.
+
+The results from five different AOIs from around the globe are made available for testing and comparison. You can access them at this link: https://cloud.riscognition.com/s/NpgToNY7JwErpbi 
